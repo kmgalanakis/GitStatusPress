@@ -1,0 +1,44 @@
+/**
+ * All of the CSS for your admin-specific functionality should be
+ * included in this file.
+ */
+
+.gsp-parent-node li {
+    padding: 5px 5px !important;
+}
+
+.gsp-parent-node .gsp-icon:before {
+    content: "\f503";
+    font-family: 'dashicons';
+    position: relative;
+    float: left;
+    font: normal 20px/1 dashicons;
+    speak: none;
+    padding: 4px 0;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background-image: none !important;
+    margin-right: 2px;
+    top: 2px;
+    color: rgba(240,245,250,0.6);
+}
+
+.gsp-parent-node .gsp-status-icon:before {
+    content: '\f339';
+    font-family: 'dashicons';
+    font-size: 16px;
+    position: relative;
+    top: 3px;
+}
+
+.gsp-parent-node .gsp-status-icon-active:before {
+    color: green;
+}
+
+.gsp-parent-node .gsp-status-icon-inactive:before {
+    color: red;
+}
+
+.gsp-parent-node .gsp-plugin-title {
+    margin-left: 5px !important;
+}
