@@ -7,20 +7,10 @@
     padding: 5px 5px !important;
 }
 
-.gsp-parent-node .gsp-icon:before {
+.gsp-parent-node .ab-icon:before {
     content: "\f503";
     font-family: 'dashicons';
-    position: relative;
-    float: left;
-    font: normal 20px/1 dashicons;
-    speak: none;
-    padding: 4px 0;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    background-image: none !important;
-    margin-right: 2px;
-    top: 2px;
-    color: rgba(240,245,250,0.6);
+    top: 3px;
 }
 
 .gsp-parent-node .gsp-status-icon:before {

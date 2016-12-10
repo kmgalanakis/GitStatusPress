@@ -75,35 +75,39 @@ class Gitstatuspress_Admin {
      */
     function add_gitstatuspress_to_toolbar( $wp_admin_bar ) {
 
+	    $plugins_git = array();
 
         if ( is_admin() ) {
+	        $plugins_git = self::get_plugins_git();
+	        add_option( 'gitstatuspress_plugins_git', json_encode( $plugins_git ), '', 'yes' );
+        }
+        else {
+	        $plugins_git = json_decode( get_option( 'gitstatuspress_plugins_git' ), true );
+        }
 
-            $plugins_git = self::get_plugins_git();
+        // Add the main node in the Admin Bar
+        $args = array(
+            'id' => self::PARENT_NODE_ID,
+            'title' => '<span class="ab-icon"></span>' . $this->get_gitstatuspress_string(),
+            'meta'   => array( 'class' => 'gsp-parent-node' )
+        );
+        $wp_admin_bar->add_node($args);
 
-            // Add the main node in the Admin Bar
-            $args = array(
-                'id' => self::PARENT_NODE_ID,
-                'title' => '<span class="gsp-icon"></span>' . $this->get_gitstatuspress_string(),
-                'meta'   => array( 'class' => 'gsp-parent-node' )
-            );
-            $wp_admin_bar->add_node($args);
+        if (count($plugins_git)) {
+            ksort($plugins_git);
 
-            if (count($plugins_git)) {
-                ksort($plugins_git);
+            foreach ($plugins_git as $plugin_name => $plugin_info) {
 
-                foreach ($plugins_git as $plugin_name => $plugin_info) {
+                $title =    '<span class="gsp-status-icon gsp-status-icon-' . $plugin_info['status'] . '" title="' . __( ucfirst($plugin_info['status'] ), self::TEXT_DOMAIN ) . '"></span>' .
+                            '<span class="gsp-plugin-title" title="' . $plugin_info['path'] . '">' . $plugin_name . ' ('. $plugin_info['version'] . ') ' . $plugin_info['branch_info'] . '</span>';
 
-                    $title =    '<span class="gsp-status-icon gsp-status-icon-' . $plugin_info['status'] . '" title="' . __( ucfirst($plugin_info['status'] ), self::TEXT_DOMAIN ) . '"></span>' .
-                                '<span class="gsp-plugin-title" title="' . $plugin_info['path'] . '">' . $plugin_name . ' ('. $plugin_info['version'] . ') ' . $plugin_info['branch_info'] . '</span>';
-
-                    // add a child item to our parent item
-                    $args = array(
-                        'id' => $plugin_name,
-                        'title' => $title,
-                        'parent' => 'gitstatuspress',
-                    );
-                    $wp_admin_bar->add_node($args);
-                }
+                // add a child item to our parent item
+                $args = array(
+                    'id' => $plugin_name,
+                    'title' => $title,
+                    'parent' => 'gitstatuspress',
+                );
+                $wp_admin_bar->add_node($args);
             }
         }
     }
@@ -182,7 +186,6 @@ class Gitstatuspress_Admin {
 	public function enqueue_styles() {
 
 		/**
-		 * This function is provided for demonstration purposes only.
 		 *
 		 * An instance of this class should be passed to the run() function
 		 * defined in Gitstatuspress_Loader as all of the hooks are defined
@@ -205,7 +208,6 @@ class Gitstatuspress_Admin {
 	public function enqueue_scripts() {
 
 		/**
-		 * This function is provided for demonstration purposes only.
 		 *
 		 * An instance of this class should be passed to the run() function
 		 * defined in Gitstatuspress_Loader as all of the hooks are defined
