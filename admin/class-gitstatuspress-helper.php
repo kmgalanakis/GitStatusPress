@@ -11,7 +11,7 @@
  */
 
 /**
- * The admin-specific functionality of the plugin.
+ * The git-specific functionality of the plugin.
  *
  * Defines the plugin name, version, and two examples hooks for how to
  * enqueue the admin-specific stylesheet and JavaScript.
@@ -28,7 +28,7 @@ class Gitstatuspress_Helper {
         }
         $time_elapsed = human_time_diff( $git_fetch_head_file_time );
 
-        return sprintf( ' &#x2798; %s ago', $time_elapsed );
+        return sprintf( ' &#x21f2; %s ago', $time_elapsed );
     }
 
     public function get_branch_info( $repository_path ) {
