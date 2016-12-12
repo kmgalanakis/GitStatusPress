@@ -79,10 +79,10 @@ class Gitstatuspress_Admin {
 
         if ( is_admin() ) {
 	        $plugins_git = self::get_plugins_git();
-	        add_option( 'gitstatuspress_plugins_git', json_encode( $plugins_git ), '', 'yes' );
+	        update_option( 'gitstatuspress_plugins_git', serialize( $plugins_git ), '', 'yes' );
         }
         else {
-	        $plugins_git = json_decode( get_option( 'gitstatuspress_plugins_git' ), true );
+	        $plugins_git = unserialize( get_option( 'gitstatuspress_plugins_git' ) );
         }
 
         // Add the main node in the Admin Bar
@@ -133,9 +133,7 @@ class Gitstatuspress_Admin {
             $git_dir = $plugin_dir . '/' . '.git';
 
             if (file_exists($git_dir)) {
-
-
-                $files = scandir($plugin_dir);
+            	$files = scandir($plugin_dir);
                 foreach ($files as $file) {
 
                     if (!stristr($file, '.php')) {
