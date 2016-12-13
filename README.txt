@@ -8,11 +8,11 @@ Stable tag: 4.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-The plugin creates an Admin Toolbar menu that contains all the installed plugin that are installed using git along with relevant information for each plugin.
+Get an Admin Toolbar menu that contains all the installed plugin that are installed using git along with relevant information for each one.
 
 == Description ==
 
-The plugin creates an Admin Toolbar menu that contains all the installed plugin that are installed using git along with relevant information for each plugin.
+Get an Admin Toolbar menu that contains all the installed plugin that are installed using git along with relevant information for each one.
 
 == Installation ==
 
@@ -37,4 +37,9 @@ No, you don't have to do anything specific. Just enable the plugin and you will 
 
 = 1.0 =
 * Release date: 2016-12-13
-* First release
+* Initial release.
+
+== Upgrade Notice ==
+
+= 1.0 =
+Initial release.
