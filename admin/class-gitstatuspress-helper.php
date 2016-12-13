@@ -31,6 +31,15 @@ class Gitstatuspress_Helper {
         return sprintf( ' &#x21f2; %s ago', $time_elapsed );
     }
 
+	public function head_file_time_string( $git_fetch_head_file_time ) {
+		if( ! $git_fetch_head_file_time ) {
+			return ' &#x292B;';
+		}
+		$time_elapsed = human_time_diff( $git_fetch_head_file_time );
+
+		return sprintf( ' &#x21a7; %s ago', $time_elapsed );
+	}
+
     public function get_branch_info( $repository_path ) {
 
         $git_head_file = self::get_git_head_file_content( $repository_path );
@@ -44,10 +53,19 @@ class Gitstatuspress_Helper {
             return '';
         }
 
-        $git_fetch_head_file_time = self::get_git_fetch_head_file_time( $repository_path );
-        $last_pulled = self::file_time_string( $git_fetch_head_file_time );
+        $result = '';
 
-        $result = sprintf( ' @ %s%s',  $branch_name, $last_pulled );
+        $git_fetch_head_file_time = self::get_git_fetch_head_file_time( $repository_path );
+        if( $git_fetch_head_file_time != null )
+        {
+        	$last_pulled = self::file_time_string( $git_fetch_head_file_time );
+	        $result .= sprintf( ' @ %s%s',  $branch_name, $last_pulled );
+        }
+	    else {
+		    $git_head_file_time = self::get_git_head_file_time( $repository_path );
+		    $cloned = self::head_file_time_string( $git_head_file_time );
+		    $result .= sprintf( ' @ %s%s',  $branch_name, $cloned );
+	    }
 
         return $result;
 
@@ -65,10 +83,21 @@ class Gitstatuspress_Helper {
 
     }
 
+	public function get_git_head_file_time( $repository_path ) {
+		$head_file_path = self::construct_head_path( $repository_path );
+		if (!is_file($head_file_path)) {
+			$time = null;
+		} else {
+			$time = filemtime($head_file_path);
+		}
+
+		return  $time;
+	}
+
     public function get_git_fetch_head_file_time( $repository_path ) {
         $head_fetch_file_path = self::construct_fetch_head_path( $repository_path );
         if (!is_file($head_fetch_file_path)) {
-            $time = null;
+	        $time = null;
         } else {
             $time = filemtime($head_fetch_file_path);
         }
