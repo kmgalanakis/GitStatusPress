@@ -15,7 +15,7 @@
  * @wordpress-plugin
  * Plugin Name:       GitStatusPress
  * Plugin URI:        https://github.com/kmgalanakis/GitStatusPress
- * Description:       This is a short description of what the plugin does. It's displayed in the WordPress admin area.
+ * Description:       Get an Admin Toolbar menu that contains all the installed plugin that are installed using git along with relevant information for each one.
  * Version:           1.0.0
  * Author:            Konstantinos Galanakis
  * Author URI:        https://github.com/kmgalanakis
