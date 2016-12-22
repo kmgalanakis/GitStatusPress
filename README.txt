@@ -4,7 +4,7 @@ Donate link: https://github.com/kmgalanakis
 Tags: git, status, plugins, version, last pulled
 Requires at least: 3.7
 Tested up to: 4.7
-Stable tag: 1.0
+Stable tag: 1.0.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -35,6 +35,10 @@ No, you don't have to do anything specific. Just enable the plugin and you will 
 
 == Changelog ==
 
+= 1.0.1 =
+* Release date: 2016-12-22
+* Minor fixes
+
 = 1.0 =
 * Release date: 2016-12-13
 * Initial release.
@@ -43,3 +47,6 @@ No, you don't have to do anything specific. Just enable the plugin and you will 
 
 = 1.0 =
 Initial release.
+
+= 1.0.1 =
+* Minor fixes
