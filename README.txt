@@ -1,7 +1,7 @@
 === GitStatusPress ===
 Contributors: kmgalanakis
 Donate link: https://github.com/kmgalanakis
-Tags: git, status, plugins, version, last pulled
+Tags: git, status, plugins, version, last pulled, git branch, branch
 Requires at least: 3.7
 Tested up to: 4.7
 Stable tag: 1.0.1
